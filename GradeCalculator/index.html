@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CS10 Grade Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="main.js"></script>
+  </head>
+
+  <body>
+    <h1>CS10 Grade Calculator</h1>
+    <hr />
+    <p>
+      Plug in your grades and calculate your overall percent. It will be the
+      <strong>average</strong> of your grades on five individual CTS modules.
+    </p>
+    <hr />
+    <h2>Plug in Grades</h2>
+    <p>Client-Side Scripting 1: <input id="css1" type="number" />% <span id="lettergradeCCS1"></span></p>
+    <p>Structured Programming 1: <input id="sp1" type="number" />% <span id="lettergradeSP1"></span></p>
+    <p>Structured Programming 2: <input id="sp2" type="number" />% <span id="lettergradeSP2"></span></p>
+    <p>Client-Side Scripting 2: <input id="css2" type="number" />% <span id="lettergradeCCS2"></span></p>
+    <p>Project A: <input id="pA" type="number" />% <span id="lettergradepA"></span></p>
+    <button class="calcbtn" id="calculate">Calculate CS10 Grade</button>
+    <hr />
+    <h2>
+      <strong class="finalgrade"
+        >Final CS10 Grade = <span id="output">----</span>%</strong
+      >
+    </h2>
+  </body>
+</html>

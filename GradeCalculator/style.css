@@ -1,0 +1,17 @@
+body {
+  width: 600px;
+  margin: 25px auto;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input {
+  width: 50px;
+}
+
+.analyzebtn {
+  border-radius: 12px;
+  padding: 14px 40px;
+  font-size: 15px;
+  background-color: greenyellow;
+  border: 2px solid #4caf50;
+}
