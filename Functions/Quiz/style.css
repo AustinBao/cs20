@@ -5,11 +5,11 @@ body {
 }
 
 input {
-  width: 300px;
+  width: 150px;
 }
 
 input:focus {
-  background-color: #cdcdcd;
+  background-color: yellow;
 }
 
 .centerImg {
