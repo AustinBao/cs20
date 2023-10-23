@@ -7,6 +7,7 @@ function quizResults() {
   // sets score to 0 each time you submit quiz
   let score = 0;
 
+  // add to score since markQuestion() returns 0 or 1
   score += markQuestion(1, "salmon");
   score += markQuestion(2, "cod");
   score += markQuestion(3, "catfish");
