@@ -1,37 +1,50 @@
-// Button Designer BY AUSTIN
+// Nickname Generator BY AUSTIN
 
-// Button Event Listener
-document.getElementById("btn").addEventListener("click", btnClicked);
+// Button Event Listeners
+document.getElementById("allbtn").addEventListener("click", allNickname);
+document.getElementById("randbtn").addEventListener("click", randomNickname);
 
-function btnClicked() {
-  // Inputs
-  let bgHexColor = document.getElementById("color-in").value;
-  let btnText = document.getElementById("text-in").value;
+// array with all the nicknames I made
+let nicknames = [
+  "Ruby",
+  "Gorlock",
+  "Natty",
+  "Sandy",
+  "Nanny",
+  "Gear",
+  "Tray",
+  "Pencil",
+  "Funky",
+];
 
-  // Convert Hex Color to RGB (allows us to use RGB)
-  let red = parseInt(bgHexColor.substring(1, 3), 16);
-  let green = parseInt(bgHexColor.substring(3, 5), 16);
-  let blue = parseInt(bgHexColor.substring(5, 7), 16);
+let results = document.getElementById("results");
 
-  // Verify Inputs & Conversions in Console
-  console.log(`bgHexColor: ${bgHexColor}`);
-  console.log(`btnText: ${btnText}`);
-  console.log(`red: ${red}`);
-  console.log(`green: ${green}`);
-  console.log(`blue: ${blue}`);
+function allNickname() {
+  // reset list of nicknames
+  results.innerHTML = "";
 
-  // SET TEXT INSIDE BUTTON
-  document.getElementById("demo-btn").innerHTML = btnText;
-  // SET BACKGROUND COLOR OR BUTTON
-  document.getElementById("demo-btn").style.backgroundColor = bgHexColor;
-  // CALC THE BRIGHTNESS OF THE COLOR
-  let brightness = Math.sqrt(
-    0.299 * red ** 2 + 0.587 * green ** 2 + 0.114 * blue ** 2
-  );
-  // DETERMINE WHAT COLOR THE TEXT INSIDE THE BUTTON SHOULD BE BASED OFF THE BRIGHTNESS
-  if (brightness > 180) {
-    document.getElementById("demo-btn").style.color = "black";
-  } else {
-    document.getElementById("demo-btn").style.color = "white";
+  // grab input
+  let firstname = document.getElementById("firstname").value;
+  let lastname = document.getElementById("lastname").value;
+
+  // loop through all nicknames and display them by adding to a <div> tag in html
+  for (let i = 0; i < nicknames.length; i++) {
+    results.innerHTML += `<p>${firstname} "${nicknames[i]}" ${lastname}</p>`;
   }
+}
+
+function randomNickname() {
+  // reset list of nicknames
+  results.innerHTML = "";
+
+  // grab input
+  let firstname = document.getElementById("firstname").value;
+  let lastname = document.getElementById("lastname").value;
+
+  // Gets a random index of our nicknames array. Uses floor function which lowers all decimal values to the base integer (thus no decimals in randnum)
+  let randnum = Math.floor(Math.random() * nicknames.length);
+  // console.log(randnum);
+
+  // set <div> tag to our result. Displays output
+  results.innerHTML += `<p>${firstname} "${nicknames[randnum]}" ${lastname}</p>`;
 }
