@@ -22,20 +22,34 @@ function dislpayWeatherData(data) {
   for ([key, val] of Object.entries(data)) {
     console.log(key, val);
   }
-
-  // Coord
-
   // Weather
-
+  // display image depending on weatherAPI's provided icons
   let icon = data.weather[0].icon;
-  console.log(icon);
   document.getElementById(
     "weatherIcon"
   ).src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
+  // change the first letter of all words in the description to uppercase and display ouput.
+  let desc = data.weather[0].description.split(" ");
+  for (let i = 0; i < desc.length; i++) {
+    desc[i] = desc[i][0].toUpperCase() + desc[i].substr(1);
+  }
+  desc = desc.join(" ");
+  document.getElementById("result").innerHTML = desc;
+
+  // change background image depending on current weather. We grab the "html" element to change the background.
   let main = data.weather[0].main;
-  document.body.style.backgroundImage = `url(backgrounds/${main}.png)`;
+  let html = document.documentElement;
+  html.style.backgroundImage = `url(backgrounds/${main}.png)`;
+  html.style.backgroundSize = "cover";
+
   // Main
+  let mainWeatherInfo = [];
+  for ([key, val] of Object.entries(data.main)) {
+    mainWeatherInfo.push(val);
+    document.getElementById("mainDisplay").innerHTML += `<p>${key} ${val}</p>`;
+  }
+  console.log(mainWeatherInfo);
 
   // Wind
 
