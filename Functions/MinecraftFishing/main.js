@@ -18,6 +18,7 @@ let numPuffer = 0;
 // Add Event Listener to Calculate Button
 fishBtn.addEventListener('click', fishBtnClicked);
 
+// function that adds to a fish counter depending on percentages
 function catchFish(codPerc, salmonPerc, tropicalPerc){
   let randNum = Math.random();
   if (randNum < codPerc) {

@@ -6,11 +6,13 @@ let ctx = cnv.getContext("2d");
 cnv.width = 600;
 cnv.height = 400;
 
-// Global Variables
+// Global Variables for current mouse cords
 let mouseX;
 let mouseY;
 
+// determines if mouse is in circle
 function ptInCircle(x1, y1, x, y, r) {
+  // use distance formula to determine if mouse is in circle
   let distance = Math.sqrt((x1 - x) ** 2 + (y1 - y) ** 2);
   if (distance < r) {
     return true;
@@ -19,6 +21,7 @@ function ptInCircle(x1, y1, x, y, r) {
   }
 }
 
+// spawns in a new randomly generated circle
 function newRandomCircle() {
   return (blackCircle = {
     x: Math.random() * cnv.width,
@@ -34,14 +37,14 @@ function fillCircle(x, y, r) {
   ctx.fill();
 }
 
-// Event Stuff
+// Event handler
 document.addEventListener("mousemove", mousemoveHandler);
 
 function mousemoveHandler(e) {
   // Get rectangle info about canvas location
   let cnvRect = cnv.getBoundingClientRect();
 
-  // Calc mouse coordinates using mouse event and canvas location info
+  // Calculate mouse coordinates using mouse event and canvas location info
   mouseX = Math.round(e.clientX - cnvRect.left);
   mouseY = Math.round(e.clientY - cnvRect.top);
 }

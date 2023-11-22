@@ -1,4 +1,4 @@
-// CS10 QUIZ BY AUSTIN
+// CS20 QUIZ BY AUSTIN
 
 // Button event listener
 document.getElementById("submit").addEventListener("click", quizResults);
@@ -7,6 +7,7 @@ function quizResults() {
   // sets score to 0 each time you submit quiz
   let score = 0;
 
+  // add to score with each question (value could be either 0 or 1)
   score += markQuestion(1, "salmon");
   score += markQuestion(2, "cod");
   score += markQuestion(3, "catfish");
@@ -40,11 +41,13 @@ function quizResults() {
 // checks the id of html input elements and sees if the input value is equal to the provided answer
 function markQuestion(qNum, correctAnswer) {
   let currentInput = document.getElementById(String(qNum));
-
+  
+  // return 1 if answer is correct, thus increasing our score
   if (currentInput.value.toLowerCase() === correctAnswer) {
     currentInput.style.outline = "2px solid green";
     return 1;
   }
+  // return 0 if answer is incorrect, thus not changing our score
   currentInput.style.outline = "2px solid red";
   return 0;
 }

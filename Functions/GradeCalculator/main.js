@@ -3,6 +3,7 @@
 // Button event listener
 document.getElementById("calculate").addEventListener("click", calculateGrade);
 
+// Returns letter grade
 function getLetterGrade(percentGrade) {
   if (percentGrade >= 90 && percentGrade <= 100) {
     return "A";
