@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Weather</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
     <script defer src="main.js"></script>
   </head>
@@ -9,8 +10,9 @@
   <body>
     <h1>Check the weather</h1>
 
-    <input id="city" type="text" />
-    <button class="submitbtn" id="submitbtn">Submit</button>
+    <input id="city" placeholder="Enter City" type="text" />
+
+    <button class="submitbtn" id="submitbtn">Search</button>
 
     <p id="result">---</p>
 
@@ -20,6 +22,10 @@
       src="weatherapi.png"
       alt="weather icon"
     />
-    <div id="mainDisplay"></div>
+    <div class="row">
+      <div class="column" id="mainDisplayLeft"></div>
+      <div class="column" id="mainDisplayMid"></div>
+      <div class="column" id="mainDisplayRight"></div>
+    </div>
   </body>
 </html>

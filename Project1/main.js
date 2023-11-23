@@ -1,5 +1,9 @@
 document.getElementById("submitbtn").addEventListener("click", getWeatherData);
 
+let leftdisplay = document.getElementById("mainDisplayLeft");
+let middisplay = document.getElementById("mainDisplayMid");
+let rightdisplay = document.getElementById("mainDisplayRight");
+
 async function getWeatherData() {
   // Get users city
   let city = document.getElementById("city").value;
@@ -12,6 +16,10 @@ async function getWeatherData() {
   );
   // waits for response then parses data as a JSON for later use
   let data = await response.json();
+
+  leftdisplay.innerHTML = "";
+  middisplay.innerHTML = "";
+  rightdisplay.innerHTML = "";
 
   // Pass returned data to display weather function
   dislpayWeatherData(data);
@@ -44,12 +52,22 @@ function dislpayWeatherData(data) {
   html.style.backgroundSize = "cover";
 
   // Main
-  let mainWeatherInfo = [];
+
   for ([key, val] of Object.entries(data.main)) {
-    mainWeatherInfo.push(val);
-    document.getElementById("mainDisplay").innerHTML += `<p>${key} ${val}</p>`;
+    if (key === "temp") {
+      leftdisplay.innerHTML += `<article><h3>Temperature</h3> <p>${val}°C</p> <hr> </article>`;
+    } else if (key === "feels_like") {
+      leftdisplay.innerHTML += `<article><h3>Feels Like</h3> <p>${val}°C</p></article>`;
+    } else if (key === "temp_max") {
+      middisplay.innerHTML += `<article><h3>Max Temperature</h3> <p>${val}°C</p></article>`;
+    } else if (key === "temp_min") {
+      middisplay.innerHTML += `<article><h3>Min Temperature</h3> <p>${val}°C</p><hr> </article>`;
+    } else if (key === "pressure") {
+      rightdisplay.innerHTML += `<article><h3>Pressure</h3> <p>${val} mbar</p><hr> </article>`;
+    } else if (key === "humidity") {
+      rightdisplay.innerHTML += `<article><h3>Humidity</h3> <p>${val} g/m<sup>3</sup></p></article>`;
+    }
   }
-  console.log(mainWeatherInfo);
 
   // Wind
 
