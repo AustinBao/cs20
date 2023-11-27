@@ -8,24 +8,32 @@
   </head>
 
   <body>
-    <h1>Check the weather</h1>
+    <h1>Check the Weather</h1>
 
     <input id="city" placeholder="Enter City" type="text" />
 
     <button class="submitbtn" id="submitbtn">Search</button>
 
-    <p id="result">---</p>
+    <h2 id="result"></h2>
 
     <img
-      width="100px"
+      width="150px"
       id="weatherIcon"
       src="weatherapi.png"
       alt="weather icon"
     />
+
+    <h4 id="times"></h4>
+
     <div class="row">
       <div class="column" id="mainDisplayLeft"></div>
       <div class="column" id="mainDisplayMid"></div>
       <div class="column" id="mainDisplayRight"></div>
+    </div>
+
+    <div>
+      <p id="rain"></p>
+      <p id="snow"></p>
     </div>
   </body>
 </html>
