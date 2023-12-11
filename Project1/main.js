@@ -1,14 +1,42 @@
-// Listens to btn click to run function
-document.getElementById("submitbtn").addEventListener("click", getWeatherData);
-
+let cityInput = document.getElementById("city");
 let leftdisplay = document.getElementById("mainDisplayLeft");
 let middisplay = document.getElementById("mainDisplayMid");
 let rightdisplay = document.getElementById("mainDisplayRight");
+let star = document.getElementById("favstar");
+
+document
+  .getElementById("favcities")
+  .addEventListener("change", function (event) {
+    var favouriteCity = event.target.value;
+    cityInput.value = favouriteCity;
+  });
+
+// Listens to btn click to run function
+document.getElementById("submitbtn").addEventListener("click", getWeatherData);
+
+star.addEventListener("click", addAndRemoveFavourites);
+
+function addAndRemoveFavourites() {
+  if (localStorage.getItem("favourites").length >= 0) {
+    let favourites = localStorage.getItem("favourites");
+  } else {
+    let favourites = [];
+  }
+
+  let index = favourites.indexOf(cityInput.value);
+
+  if (index > -1) {
+    // only splice array when item is found
+    favourites.splice(index, 1);
+  } else {
+    favourites.push(cityInput.value);
+  }
+  localStorage.setItem("favourites", favourites);
+}
 
 async function getWeatherData() {
   // Get users city
-  let city = document.getElementById("city").value;
-  // ApiKey from my weather data provider (https://openweathermap.org/api)
+  let city = cityInput.value;
   let apiKey = "063bdab6bd3f0e17b1afe04736c947ff";
 
   // Calling Api and return in form of JSON file
@@ -18,7 +46,6 @@ async function getWeatherData() {
   // waits for response then parses data as a JSON for later use
   let data = await response.json();
 
-  // So the info isnt added on top of each other multiple times
   leftdisplay.innerHTML = "";
   middisplay.innerHTML = "";
   rightdisplay.innerHTML = "";
@@ -35,6 +62,8 @@ function dislpayWeatherData(data) {
     document.getElementById("result").innerHTML = "City Not Found";
     document.getElementById("weatherIcon").src = "weatherapi.png";
   }
+
+  star.style.visibility = "visible";
 
   // iterate the keys and values of each element in data.
   for ([key, val] of Object.entries(data)) {

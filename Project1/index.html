@@ -8,12 +8,25 @@
   </head>
 
   <body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
     <h1>Check the Weather</h1>
+    <div>
+      <label>Favourites</label>
+      <select id="favcities">
+        <option value="Volvo">Volvo</option>
+        <option value="Saab">Saab</option>
+        <option value="Opel">Opel</option>
+        <option value="Audi">Audi</option>
+      </select>
+    </div>
 
     <input id="city" placeholder="Enter City" type="text" />
-
     <button class="submitbtn" id="submitbtn">Search</button>
-
+    <span class="fa fa-star hide" id="favstar"></span>
     <h2 id="result"></h2>
 
     <img

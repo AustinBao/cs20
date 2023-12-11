@@ -13,6 +13,18 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+select {
+  width: 100px;
+  padding: 5px;
+  border: none;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+label {
+  font-size: 18px;
+}
+
 input {
   width: 150px;
   padding: 5px;
@@ -26,6 +38,17 @@ input:focus {
   outline: none;
 }
 
+.favourited {
+  color: orange;
+}
+
+.hide {
+  visibility: hidden;
+}
+.show {
+  visibility: visible;
+}
+
 button {
   border-radius: 4px;
   padding: 5px;
@@ -33,6 +56,10 @@ button {
   color: white;
   font-size: 18px;
   background-color: orange;
+}
+
+span {
+  width: 15px;
 }
 
 /*  NOT MY CODE FROM THIS POINT ON. STILL TRYING TO UNDERSTAND */
