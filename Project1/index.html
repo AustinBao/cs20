@@ -4,7 +4,9 @@
     <title>Weather</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
-    <script defer src="main.js"></script>
+    <script defer src="scripts/main.js"></script>
+    <script defer src="scripts/displayMainInfo.js"></script>
+    <script defer src="scripts/favourites.js"></script>
   </head>
 
   <body>
@@ -16,12 +18,7 @@
     <h1>Check the Weather</h1>
     <div>
       <label>Favourites</label>
-      <select id="favcities">
-        <option value="Volvo">Volvo</option>
-        <option value="Saab">Saab</option>
-        <option value="Opel">Opel</option>
-        <option value="Audi">Audi</option>
-      </select>
+      <select id="favcities"></select>
     </div>
 
     <input id="city" placeholder="Enter City" type="text" />
@@ -32,7 +29,7 @@
     <img
       width="150px"
       id="weatherIcon"
-      src="weatherapi.png"
+      src="backgrounds/weatherapi.png"
       alt="weather icon"
     />
 

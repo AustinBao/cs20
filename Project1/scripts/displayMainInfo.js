@@ -1,81 +1,13 @@
-let cityInput = document.getElementById("city");
-let leftdisplay = document.getElementById("mainDisplayLeft");
-let middisplay = document.getElementById("mainDisplayMid");
-let rightdisplay = document.getElementById("mainDisplayRight");
-let star = document.getElementById("favstar");
-
-document
-  .getElementById("favcities")
-  .addEventListener("change", function (event) {
-    var favouriteCity = event.target.value;
-    cityInput.value = favouriteCity;
-  });
-
-// Listens to btn click to run function
-document.getElementById("submitbtn").addEventListener("click", getWeatherData);
-
-star.addEventListener("click", addAndRemoveFavourites);
-
-function addAndRemoveFavourites() {
-  if (localStorage.getItem("favourites").length >= 0) {
-    let favourites = localStorage.getItem("favourites");
-  } else {
-    let favourites = [];
-  }
-
-  let index = favourites.indexOf(cityInput.value);
-
-  if (index > -1) {
-    // only splice array when item is found
-    favourites.splice(index, 1);
-  } else {
-    favourites.push(cityInput.value);
-  }
-  localStorage.setItem("favourites", favourites);
-}
-
-async function getWeatherData() {
-  // Get users city
-  let city = cityInput.value;
-  let apiKey = "063bdab6bd3f0e17b1afe04736c947ff";
-
-  // Calling Api and return in form of JSON file
-  let response = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=en&pop=metric&rain=metric&clouds=metric`
-  );
-  // waits for response then parses data as a JSON for later use
-  let data = await response.json();
-
-  leftdisplay.innerHTML = "";
-  middisplay.innerHTML = "";
-  rightdisplay.innerHTML = "";
-  document.getElementById("rain").innerHTML = "";
-  document.getElementById("snow").innerHTML = "";
-
-  // Pass returned data to display weather function
-  dislpayWeatherData(data);
-}
-
 function dislpayWeatherData(data) {
-  // Checks if the data returned is useable (ie. checks if city exists)
-  if (data.cod === "404") {
-    document.getElementById("result").innerHTML = "City Not Found";
-    document.getElementById("weatherIcon").src = "weatherapi.png";
-  }
-
-  star.style.visibility = "visible";
-
   // iterate the keys and values of each element in data.
-  for ([key, val] of Object.entries(data)) {
-    console.log(key, val);
-  }
+  // for ([key, val] of Object.entries(data)) {
+  //   console.log(key, val);
+  // }
 
   // Weather
   // display image depending on weatherAPI's provided icons
   let icon = data.weather[0].icon;
-  document.getElementById(
-    "weatherIcon"
-  ).src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+  weatherImg.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
   // change the first letter of all words in the description to uppercase and display ouput.
   let desc = data.weather[0].description.split(" ");
@@ -93,11 +25,9 @@ function dislpayWeatherData(data) {
 
   //Adding time of request and also country. Converts Unix UTC time to normal time
   let dateOBJ = new Date(data.dt * 1000);
-  let time = dateOBJ.toLocaleTimeString("en-US");
+  let realtime = dateOBJ.toLocaleTimeString("en-US");
   let date = dateOBJ.toLocaleDateString("en-US");
-  document.getElementById(
-    "times"
-  ).innerHTML = `Time of data collection: ${time}, ${date}`;
+  time.innerHTML = `Time of data collection: ${realtime}, ${date}`;
 
   // Main Info
   // Loop through all keys and add their values to their respective columns
