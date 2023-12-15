@@ -7,6 +7,8 @@ let select = document.getElementById("favcities");
 let star = document.getElementById("favstar");
 let weatherImg = document.getElementById("weatherIcon");
 
+document.getElementById("submitbtn").addEventListener("click", getWeatherData);
+
 function resetPage() {
   leftdisplay.innerHTML = "";
   middisplay.innerHTML = "";
@@ -37,9 +39,9 @@ async function getWeatherData() {
     resetPage();
     throw new Error("No City Found");
   } else {
+    resetPage();
     star.style.visibility = "visible";
   }
-
   // waits for response then parses data as a JSON for later use
   let data = await response.json();
   dislpayWeatherData(data);
