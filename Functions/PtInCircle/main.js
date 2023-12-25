@@ -10,7 +10,11 @@ cnv.height = 400;
 let mouseX;
 let mouseY;
 
+<<<<<<< HEAD
 // determines if mouse is in circle
+=======
+// function that tests if mouse in circle. Uses distance formula.
+>>>>>>> b8d63b60f269dea73126a83a6e1fcb19552132a7
 function ptInCircle(x1, y1, x, y, r) {
   // use distance formula to determine if mouse is in circle
   let distance = Math.sqrt((x1 - x) ** 2 + (y1 - y) ** 2);
